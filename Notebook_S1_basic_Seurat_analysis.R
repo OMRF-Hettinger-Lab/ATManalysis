@@ -143,5 +143,6 @@ DEG_lists_all_genes <- DEG_lists
 dir.create("DEGs_per_cluster_all_genes")
 setwd("DEGs_per_cluster_all_genes")
 for (i in names(DEG_lists)){
-  openxlsx::write.xlsx(DEG_lists[[i]], sprintf("cluster_%s_DEGs.xlsx",i))
+  #openxlsx::write.xlsx(DEG_lists[[i]], sprintf("cluster_%s_DEGs.xlsx",i))
+  write.csv(DEG_lists[[i]], sprintf("cluster_%s_DEGs.csv",i))
 }
