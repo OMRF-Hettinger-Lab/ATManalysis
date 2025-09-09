@@ -27,7 +27,16 @@ whole[[4]] <- CreateSeuratObject(counts=fdata[[4]], project = "Young_Males")
 
 #merge all samples
 whole <- merge(x=whole[[1]], y=list(whole[[2]], whole[[3]], whole[[4]]), add.cell.ids = c("Old_Females", "Old_Males", "Young_Females", "Young_Males" ))
-whole <- merge(x=whole[[2]], y=whole[[4]], add.cell.ids = c("Old_Males", "Young_Males" ))
+#whole <- merge(x=whole[[2]], y=whole[[4]], add.cell.ids = c("Old_Males", "Young_Males" ))
+# ^ Why throw away half of the samples?
+#
+# Perhaps due to having much fewer cells?
+# table(whole$orig.ident)
+#
+#  Old_Females     Old_Males Young_Females   Young_Males
+#         1749          6079           826          7055
+#
+# But since they specifically refer to females later, not removing those two for now
 
 ## Number of cells before
 cells.before <- length(colnames(x= whole))
