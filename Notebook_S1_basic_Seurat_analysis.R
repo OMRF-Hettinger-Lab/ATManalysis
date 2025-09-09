@@ -1,3 +1,7 @@
+#!/bin/env -S Rscript --vanilla
+#SBATCH --mem 32G
+#SBATCH --cpus-per-task 8
+
 ## Basic Analysis
 library(Seurat)
 library(dplyr)
