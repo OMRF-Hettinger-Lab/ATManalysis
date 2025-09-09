@@ -4,13 +4,13 @@ library(dplyr)
 library(Matrix)
 library(ggplot2) # for plot construction function ggplot, etc.
 
-dataFolder <- "/data/rihao/elsie_project_202307/data"
+dataFolder <- "." # Manually update this location
 
 dataFolders <- list()
-dataFolders[[1]] <- paste(dataFolder, "/Old_Females_MMT_cellranger/filtered_feature_bc_matrix", sep="")
-dataFolders[[2]] <- paste(dataFolder, "/Old_Males_MMT_cellranger/filtered_feature_bc_matrix", sep="")
-dataFolders[[3]] <- paste(dataFolder, "/Young_Females_MMT_cellranger/filtered_feature_bc_matrix", sep="")
-dataFolders[[4]] <- paste(dataFolder, "/Young_Males_MMT_cellranger/filtered_feature_bc_matrix", sep="")
+dataFolders[[1]] <- paste(dataFolder, "/Old_Females", sep="")
+dataFolders[[2]] <- paste(dataFolder, "/Old_Males", sep="")
+dataFolders[[3]] <- paste(dataFolder, "/Young_Females", sep="")
+dataFolders[[4]] <- paste(dataFolder, "/Young_Males", sep="")
 
 fdata <- list()
 fdata[[1]] <- Read10X(dataFolders[[1]])
@@ -128,7 +128,8 @@ names(DEG_lists)
 
 DEG_lists_all_genes <- DEG_lists
 
-setwd("/data/rihao/elsie_project_202307/DEGs_per_cluster_all_genes")
+dir.create("DEGs_per_cluster_all_genes")
+setwd("DEGs_per_cluster_all_genes")
 for (i in names(DEG_lists)){
   openxlsx::write.xlsx(DEG_lists[[i]], sprintf("cluster_%s_DEGs.xlsx",i))
 }
