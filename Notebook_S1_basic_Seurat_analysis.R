@@ -2,6 +2,7 @@
 library(Seurat)
 library(dplyr)
 library(Matrix)
+library(ggplot2) # for plot construction function ggplot, etc.
 
 dataFolder <- "/data/rihao/elsie_project_202307/data"
 
