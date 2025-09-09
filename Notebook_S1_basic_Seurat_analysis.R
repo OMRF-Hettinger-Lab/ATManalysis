@@ -38,6 +38,9 @@ whole <- merge(x=whole[[1]], y=list(whole[[2]], whole[[3]], whole[[4]]), add.cel
 #
 # But since they specifically refer to females later, not removing those two for now
 
+# Need to join layers since this is Seurat v5
+whole <- JoinLayers(whole)
+
 ## Number of cells before
 cells.before <- length(colnames(x= whole))
 
